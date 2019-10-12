@@ -1,0 +1,30 @@
+{% extends "users/base.html" %}
+{% block content %} 
+<div class="container jumbotron col-sm-10 bg-light ">       
+<h1>{{id.nameShop}}</h1>
+<br>
+
+<div class="alert alert-light" role="alert">
+      <div class="row">
+        <div class="col-4">
+          <img src="{{id.image.url}}" alt="" height="150" width="150">
+        </div>
+        <div class="col-8"><h5 class="card-title">
+          <br>
+              ที่อยู่ : {{id.description}}<br><br>
+                เบอร์ : {{id.phone1}}<br>
+                เบอร์ : {{id.phone2}}
+                {{scor.scor}}
+        </div>
+      </div>
+      </div>
+<br><br><br>
+<div class="alert alert-light" role="alert">
+        <br><br>
+        เวลาเปิด : {{id.dateTimeOpen}}
+        <br>
+        เวลาปิด : {{id.dateTimeClose}}
+        <br>
+      </div>
+</div>
+{% endblock content %}

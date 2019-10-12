@@ -1,0 +1,37 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %} <br>
+<div class="container jumbotron col-sm-7">       
+<div class="row">
+        <div class="col">
+
+
+        </div>
+        <div class="col-6">
+                <div class="conten-sectiob">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="from-group">
+                                <h2 class="display-5 font-weight-normal">ลงทะเบียนกับเรา</h2>
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form=group">
+                                    <button class="btn btn-primary" type="submit">ลงทะเบียน</button>
+                            </div>
+                        </form>
+                        <div class="border-top pt-3">
+                            <small class="text-muted">
+                                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">เข้าสู่ระบบ</a>
+                            </small>
+                        </div>
+                    </div>
+        </div>
+        <div class="col">
+
+            
+        </div>
+      </div>
+    
+
+        
+{% endblock content %}

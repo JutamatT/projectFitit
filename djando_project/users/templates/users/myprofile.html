@@ -1,0 +1,69 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}  
+<br> 
+{% if user.is_authenticated %}
+{%if user.profile%}
+<div class="container jumbotron col-sm-10 ">   
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="bd-placeholder-img rounded-circle" src="{{user.profile.image.url}}" alt="" height="150" width="150">
+          </div>
+          <div class="col-sm-8">
+            <br>
+              <h2>{{user.first_name}} &nbsp; {{user.last_name}}</h2>
+              <h3>{{user.email}}</h3>
+          </div>
+    </div>
+    
+    <hr>
+    <div class="container" >
+        <fieldset class="from-group">
+            
+            
+        <h3> ชื่อร้าน : {{user.profile.nameShop}}</h3>
+        <h4> ที่อยู่ : {{user.profile.description}}</h4>
+        <h4> หมายเลขโทรศัทพ์ : {{user.profile.phone1}} , {{user.profile.phone2}}</h4>
+        <h5> เวลา : {{user.profile.dateTimeOpen}}-{{user.profile.dateTimeClose}}</h5>
+           
+        </fieldset>
+        <br>
+        <div class="form=group">
+            <a class="btn btn-success" href="{% url 'profile' %}">Update</a>
+        </div>
+    </div>
+</div>
+{%else%}
+ 
+
+<div class="container jumbotron col-sm-10 ">   
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="bd-placeholder-img rounded-circle" src="/media/motor.png" alt="" height="150" width="150">
+          </div>
+          <div class="col-sm-8">
+            <br>
+              <h2>{{user.first_name}} &nbsp; {{user.last_name}}</h2>
+              <h3>{{user.email}}</h3>
+          </div>
+    </div>
+    
+    <hr>
+    <div class="container" >
+        <fieldset class="from-group">
+            <div class="alert alert-warning" role="alert">
+                *รอทำการอนุญาตโปรไฟล์ร้าน
+              </div>
+            
+        
+        </fieldset>
+        <br>
+        
+    </div>
+</div> 
+{%endif%}
+{%endif%}
+
+
+{% endblock content %}
+

@@ -1,0 +1,46 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}  
+<br> 
+<div class="container jumbotron col-sm-10 ">   
+    <img src="{{user.profile.image.url}}" alt="" height="50" width="50">
+    <h1>{{user.username}}</h1>
+    <h2>{{user.email}}</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="from-group">
+            <legend class="border-buttom mb-4">Profile Info</legend>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}<br>
+            <div class="alert alert-warning" role="alert" >
+                *ระบบจะทำการบันทึกตำแหน่งจากที่อยู่ปัจจุบันที่ทำการอัพเดตข้อมูลเท่านั้น!
+              </div>
+        </fieldset>
+        <div class="form=group">
+            <button class="btn btn-success" type="submit">Update</button>
+            <a class="btn btn-danger" type="button" href="{% url 'myprofile' %}">ออกจากระบบ</a>
+          </div>
+    </form>
+</div> 
+{% endblock content %}
+
+{%block myscript%}
+<script>
+    var le = document.getElementById("le");
+    var lo = document.getElementById("lo")
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        le.value = "Geolocation is not supported by this browser.";
+        lo.value = "Geolocation is not supported by this browser.";
+      }
+    }
+    
+    function showPosition(position) {
+      le.value = position.coords.latitude ; 
+      lo.value = position.coords.longitude; 
+    }
+    </script>
+{%endblock%}
