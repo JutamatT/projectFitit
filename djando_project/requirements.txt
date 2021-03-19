@@ -14,7 +14,7 @@ django-jinja-bootstrap-form==4.2.3
 django-mysql==2.4.1
 django-rest-coreapi-schema==0.1.2
 django-rest-framework==0.1.0
-djangorestframework==3.7.7
+djangorestframework==3.11.2
 geoip2==2.9.0
 gunicorn==19.9.0
 idna==2.7
